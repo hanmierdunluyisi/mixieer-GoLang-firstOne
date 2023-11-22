@@ -1,7 +1,15 @@
-package mixieer_GoLang_firstOne
+package main
 
-import "fmt"
+import "github.com/gin-gonic/gin"
 
+// 启动类
 func main() {
-	fmt.Println("Hello, World!")
+	r := gin.Default() //携带基础中间件启动
+	r.GET("/test", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "hello gin!",
+		})
+	})
+	r.Run() // listen and serve on 0.0.0.0:8080
+
 }
